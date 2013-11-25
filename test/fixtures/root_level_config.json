@@ -1,0 +1,19 @@
+{
+    "methods": [
+        {
+            "name": "getRestaurants",
+            "url": "http://www.yahoo.com/restaurants",
+            "method": "GET"
+        },
+        {
+            "name": "updateCourtHouses",
+            "url": "http://www.google.com/courthouses",
+            "method": "PUT"
+        },
+        {
+            "name": "deleteMusic",
+            "url": "http://www.altavista.com/music",
+            "method": "DELETE"
+        }
+    ]
+}
