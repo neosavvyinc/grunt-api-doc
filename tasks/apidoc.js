@@ -21,6 +21,7 @@ module.exports = function (grunt) {
                 throw new Error("You must pass a src and dest parameter for the grunt-api-doc task.");
             }
 
+            var title = this.data.title || "API Documentation";
             var apiConfig = JSON.parse(grunt.file.read(this.data.src));
 
             var methodBlocks = "";
@@ -30,7 +31,14 @@ module.exports = function (grunt) {
                     methodBlocks += template.hashToTemplate(nsApiTemplate, method) + "\n";
                 });
             }
-            console.log(methodBlocks);
+
+            var contents = template.hashToTemplate(
+                grunt.file.read('tasks/assets/templates/container.html'),
+                {title: title, content:methodBlocks}
+            );
+
+            grunt.file.write(this.data.dest + "/index.html", contents);
+            grunt.log.writeln('File "' + this.data.dest + "/index.html" + '" created.');
         } else {
 
             // Merge task-specific and/or target-specific options with these defaults.
